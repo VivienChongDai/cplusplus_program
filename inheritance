@@ -29,6 +29,11 @@ public:
     // Calls the Rectangle constructor to initialize length and width
     // Initializes height for the Cuboid
 	Cuboid(int l = 1, int w = 1, int h = 1);
+       /*if the declaration and difinition are made here.
+        Cuboid(int l, int w, int h) : Rectangle(l, w)
+        {
+	    height = h;
+        }*/
 	void setHeight(int h);
 	int volume()
 	{
