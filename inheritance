@@ -1,0 +1,90 @@
+#include <iostream>
+using namespace std;
+
+//// Definition of the Rectangle class
+// Rectangle serves as the base class with length and width properties
+class Rectangle
+{
+private:
+	int length;
+	int width;
+public:
+	Rectangle(int l = 1, int w = 1);
+	Rectangle(Rectangle& r);
+	void setLength(int l);
+	void setWidth(int w);
+	int area();
+};
+
+// Definition of the Cuboid class
+// Cuboid is a subclass of Rectangle that inherits its length and 
+// width properties and extends the functionality by adding a height
+// property and a method to calculate volume
+class Cuboid:public Rectangle
+{
+private:
+	int height;
+public:
+	//// Constructor with default arguments
+    // Calls the Rectangle constructor to initialize length and width
+    // Initializes height for the Cuboid
+	Cuboid(int l = 1, int w = 1, int h = 1);
+	void setHeight(int h);
+	int volume()
+	{
+		return area() * height;
+	}
+};
+int main()
+{
+	Rectangle r1;
+	r1.setLength(10);
+	r1.setWidth(5);
+	cout << "area of rectangle is " << r1.area()<<endl;
+	Rectangle r2(r1);
+	cout << "area of rectangle is " << r2.area()<<endl;
+	//// Create a Cuboid object and initialize its dimensions
+    // Note: Length and width are passed to the base Rectangle constructor
+	Cuboid c1(2,3,4);
+	cout << "volume of cuboid is " << c1.volume()<<endl;
+
+	return 0;
+}
+Rectangle::Rectangle(int l, int w)
+{
+	length = l;
+	width = w;
+}
+Rectangle::Rectangle(Rectangle& r)
+{
+	length = r.length;
+	width = r.width;
+ }
+
+void Rectangle::setLength(int l)
+{
+	length = l;
+}
+
+void Rectangle::setWidth(int w)
+{
+	width = w;
+}
+
+int Rectangle :: area()
+{
+	return length * width;
+}
+
+void Cuboid::setHeight(int h)
+{
+	 height=h;
+}
+
+// Implementation of the Cuboid constructor
+// Calls the Rectangle constructor to initialize length and width
+// Initializes the height of the cuboid
+Cuboid::Cuboid(int l, int w, int h) : Rectangle(l, w)
+{
+	height = h;
+}
