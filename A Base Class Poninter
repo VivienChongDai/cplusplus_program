@@ -1,0 +1,60 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class BasicCar
+{
+public:
+    string brand;
+
+    BasicCar(string b)
+    {
+        brand = b; 
+    }
+
+    void start()
+    {
+        cout << brand << " car started" << endl;
+    }
+};
+
+class AdvanceCar : public BasicCar
+{
+public:
+    string musicSystem;
+
+    AdvanceCar(string b, string m) : BasicCar(b)
+    {
+        musicSystem = m; // Assign musicSystem inside the constructor body
+    }
+
+    void playMusic()
+    {
+        cout << "Playing music on " << musicSystem << endl;
+    }
+};
+
+int main()
+{
+    // Create an AdvanceCar object
+    AdvanceCar myCar("Tesla", "Bose Sound System");
+
+    // Base class pointer pointing to derived class object
+    BasicCar* carPtr = &myCar;
+
+    // Accessing base class member through pointer
+    carPtr->start();
+
+    // Uncommenting this will cause a compile-time error:
+    // carPtr->playMusic();
+    // Reason: Base class pointer cannot access derived class-specific members.
+
+    cout << endl;
+
+    // To access derived class-specific members, use a derived class pointer
+    AdvanceCar* advancedCarPtr = &myCar;
+    advancedCarPtr->start();        // Accessing base class member
+    advancedCarPtr->playMusic();   // Accessing derived class member
+
+    return 0;
+}
