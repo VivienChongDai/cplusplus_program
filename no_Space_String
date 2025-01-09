@@ -1,0 +1,35 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+string no_space(const string& x)
+{
+    int i=0;
+    string newstr = "";
+    //This creates an empty string with a size of 0. When you try to access the index, it 
+    //results in undefined behavior, as you’re trying to access an index that does not exist.
+    while (i < x.size())
+    //In C++, std::string objects are not null-terminated like C-style strings.
+    //Instead, they manage their length internally.
+    {
+        if (!isspace(x[i]))
+        {
+            newstr += x[i];
+        }
+        i++;
+    }
+    return newstr;
+}
+
+int main()
+{
+    string str = "8 j 8   mBliB8g  imjB8B8  jl  B";
+    string newstring=no_space(str);
+    cout << newstring << endl;
+}
+
+/*
+C++ strings do not automatically resize to accommodate random indexed assignments.
+While strings are dynamic, their memory only grows when you explicitly append 
+characters or preallocate space using methods like.resize() or .reserve().
+*/
