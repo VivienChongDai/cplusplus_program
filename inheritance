@@ -16,10 +16,6 @@ public:
 	int area();
 };
 
-// Definition of the Cuboid class
-// Cuboid is a subclass of Rectangle that inherits its length and 
-// width properties and extends the functionality by adding a height
-// property and a method to calculate volume
 class Cuboid:public Rectangle
 {
 private:
